@@ -78,19 +78,18 @@ $(document).ready(function() {
 
         if (sub.verdict == 'OK') {
           // This is probably no entirely correct. because for multiple ac tag count will increase every time
-          sub.problem.tags.forEach(function(t) {
-            if (tags[t] === undefined) tags[t] = 1;
-            else tags[t]++;
-          });
-
-          if (levels[sub.problem.index[0]] === undefined)
-            levels[sub.problem.index[0]] = 1;
-          else levels[sub.problem.index[0]]++;
-
-          if (sub.problem.rating) {
-            ratings[sub.problem.rating] = ratings[sub.problem.rating] + 1 || 1;
+          if(problems[problemId].solved === 0){
+              sub.problem.tags.forEach(function(t) {
+                if (tags[t] === undefined) tags[t] = 1;
+                else tags[t]++;
+              });
+              if (levels[sub.problem.index[0]] === undefined)
+                levels[sub.problem.index[0]] = 1;
+              else levels[sub.problem.index[0]]++;
+              if (sub.problem.rating) {
+                ratings[sub.problem.rating] = ratings[sub.problem.rating] + 1 || 1;
+              }
           }
-
           problems[problemId].solved++;
         }
 
